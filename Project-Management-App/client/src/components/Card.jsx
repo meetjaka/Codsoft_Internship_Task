@@ -12,19 +12,19 @@ import Avatar from "@mui/material/Avatar";
 import {format} from 'timeago.js';
 
 const Container = styled.div`
-  padding: 14px 14px;
+  padding: 20px;
   text-align: left;
   margin: 12px 0px 8px 0px;
   font-size: 14px;
   font-weight: 500;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.card};
+  border-radius: 0px;
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.soft};
   color: ${({ theme }) => theme.text};
   cursor: pointer;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.09);
+  transition: all 0.2s ease-in-out;
   &:hover {
-    transition: all 0.6s ease-in-out;
-    box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid ${({ theme }) => theme.textSoft};
   }
 `;
 
@@ -82,12 +82,15 @@ const Tags = styled.div`
 `;
 
 const Tag = styled.div`
-  padding: 4px 10px;
-  border-radius: 8px;
-  color: ${({ tagColor,theme }) => tagColor + theme.lightAdd};
-  background-color: ${({ tagColor, theme }) => tagColor + "10"};
-  font-size: 10px;
-  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 0px;
+  border: 1px solid ${({ theme }) => theme.soft};
+  color: ${({ theme }) => theme.textSoft};
+  background-color: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 `;
 
 const Bottom = styled.div`

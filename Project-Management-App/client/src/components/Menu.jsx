@@ -18,7 +18,7 @@ import {
   AddTaskRounded,
 } from "@mui/icons-material";
 import { tagColors } from "../data/data";
-import LogoIcon from "../Images/Logo.svg";
+import LogoIcon from "../Images/OrbitLogo.png";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/userSlice";
 import { openSnackbar } from "../redux/snackbarSlice";
@@ -32,14 +32,12 @@ import Skeleton from "@mui/material/Skeleton";
 const Container = styled.div`
   flex: 1.3;
   background-color: ${({ theme }) => theme.bgLighter};
+  border-right: 1px solid ${({ theme }) => theme.soft};
   height: 100vh;
-  border-top-right-radius: 14px;
-  border-bottom-right-radius: 14px;
   color: ${({ theme }) => theme.text};
   font-size: 14px;
   position: sticky;
   top: 0;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
   transition: 0.3s ease-in-out;
   @media (max-width: 1100px) {
     position: fixed;
@@ -91,9 +89,10 @@ const Item = styled.div`
   align-items: center;
   gap: 20px;
   cursor: pointer;
-  padding: 7.5px 26px;
+  padding: 10px 24px;
+  transition: color 0.1s ease-in-out;
   &:hover {
-    background-color: ${({ theme }) => theme.itemHover};
+    color: ${({ theme }) => theme.text};
   }
 `;
 
@@ -155,8 +154,8 @@ const Menu = ({ darkMode, setDarkMode, setMenuOpen, setNewTeam }) => {
       <Flex>
         <Link to="/" style={{ textDecoration: "none", color: "inherit", alignItems: 'center',display: 'flex' }}>
           <Logo>
-            <Image src={LogoIcon} />
-            VEXA
+            <Image src={LogoIcon} style={{ mixBlendMode: "screen", borderRadius: "50%" }} />
+            ORBIT
           </Logo>
         </Link>
         <Close>

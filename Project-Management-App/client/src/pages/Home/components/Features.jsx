@@ -9,11 +9,11 @@ const FeaturesWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #13111C;
+  background-color: #000000;
   padding-bottom: 200px;
   margin-top: -80px;
-  background: linear-gradient(343.07deg, rgba(23, 92, 230, 0.02) 2.71%, rgba(23, 92, 230, 0.0) 64.83%);
-clip-path: polygon(0 0, 100% 0, 100% 100%,50% 95%, 0 100%);
+  background: #000000;
+  clip-path: none;
 @media (max-width: 768px) {
     padding-bottom: 100px;
     margin-top: -40px;
@@ -24,9 +24,9 @@ clip-path: polygon(0 0, 100% 0, 100% 100%,50% 95%, 0 100%);
 const Number = styled.div`
 width: 70px;
 height: 70px;
-  font-size: 36px;
-  font-weight: 800;
-  color: #306EE8;
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -48,7 +48,7 @@ const FeaturesTitle = styled.div`
   text-align: center;
   font-weight: 800;
   margin-top: 20px;
-    color: #306EE8;
+    color: #FFFFFF;
     @media (max-width: 768px) {
         margin-top: 12px;
         font-size: 36px;
@@ -92,18 +92,19 @@ const FeaturesContainer = styled.div`
 `;
 
 const FeatureCard = styled.div`
-  width: 350px;
+  width: 320px;
   height: 190px;
   position: relative;
-  background-color: hsl(250, 24%, 9%);
-  border: 0.1px solid #306EE8;
-  border-radius: 16px;
-  padding: 24px 42px;
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
-  transition: transform 0.2s ease-in-out;
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.soft};
+  border-radius: 0px;
+  padding: 18px 24px;
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease-in-out;
   &:hover {
-    transform: translateY(-10px);
+    border: 1px solid ${({ theme }) => theme.textSoft};
   }
   @media (max-width: 925px) {
     width: 300px;

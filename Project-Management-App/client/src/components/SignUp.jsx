@@ -74,7 +74,7 @@ const OutlinedBox = styled.div`
     user-select: none; 
   border: none;
     background: ${theme.primary};
-    color: white;`}
+    color: ${theme.bg};`}
   margin: 3px 20px;
   font-size: 14px;
   display: flex;
@@ -138,7 +138,6 @@ const Error = styled.div`
 `;
 
 const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
-
   const [nameValidated, setNameValidated] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -169,7 +168,10 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
           if (res.status === 200) {
             dispatch(loginSuccess(res.data));
             dispatch(
-              openSnackbar({ message: `OTP verified & Account created successfully`, severity: "success" })
+              openSnackbar({
+                message: `OTP verified & Account created successfully`,
+                severity: "success",
+              }),
             );
             setLoading(false);
             setDisabled(false);
@@ -190,7 +192,7 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
           openSnackbar({
             message: err.message,
             severity: "error",
-          })
+          }),
         );
       }
     }
@@ -207,7 +209,7 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
         openSnackbar({
           message: "Please fill all the fields",
           severity: "error",
-        })
+        }),
       );
     }
   };
@@ -257,7 +259,7 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
     ) {
       setPasswordCorrect(false);
       setcredentialError(
-        "Password must contain atleast one lowercase, uppercase, number and special character!"
+        "Password must contain atleast one lowercase, uppercase, number and special character!",
       );
     } else {
       setcredentialError("");
@@ -277,7 +279,6 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
         setcredentialError("");
         setNameValidated(true);
       }
-
     }
   };
 
@@ -285,18 +286,19 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       setLoading(true);
-      const user = await axios.get(
-        'https://www.googleapis.com/oauth2/v3/userinfo',
-        { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } },
-      ).catch((err) => {
-        dispatch(loginFailure());
-        dispatch(
-          openSnackbar({
-            message: err.message,
-            severity: "error",
-          })
-        );
-      });
+      const user = await axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .catch((err) => {
+          dispatch(loginFailure());
+          dispatch(
+            openSnackbar({
+              message: err.message,
+              severity: "error",
+            }),
+          );
+        });
 
       googleSignIn({
         name: user.data.name,
@@ -311,7 +313,7 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
             openSnackbar({
               message: "Logged In Successfully",
               severity: "success",
-            })
+            }),
           );
 
           setLoading(false);
@@ -321,24 +323,23 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
             openSnackbar({
               message: res.data.message,
               severity: "error",
-            })
+            }),
           );
           setLoading(false);
         }
       });
     },
-    onError: errorResponse => {
+    onError: (errorResponse) => {
       dispatch(loginFailure());
       dispatch(
         openSnackbar({
           message: errorResponse.error,
           severity: "error",
-        })
+        }),
       );
       setLoading(false);
     },
   });
-
 
   const theme = useTheme();
   //ssetSignInOpen(false)
@@ -355,7 +356,7 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
             }}
             onClick={() => setSignUpOpen(false)}
           />
-          {!otpSent ?
+          {!otpSent ? (
             <>
               <Title>Sign Up</Title>
               <OutlinedBox
@@ -368,7 +369,8 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
                 ) : (
                   <>
                     <GoogleIcon src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1000px-Google_%22G%22_Logo.svg.png?20210618182606" />
-                    Sign In with Google</>
+                    Sign In with Google
+                  </>
                 )}
               </OutlinedBox>
               <Divider>
@@ -435,14 +437,15 @@ const SignUp = ({ setSignUpOpen, setSignInOpen }) => {
                   "Create Account"
                 )}
               </OutlinedBox>
-
-
-
             </>
-
-            :
-            <OTP email={email} name={name} otpVerified={otpVerified} setOtpVerified={setOtpVerified} />
-          }
+          ) : (
+            <OTP
+              email={email}
+              name={name}
+              otpVerified={otpVerified}
+              setOtpVerified={setOtpVerified}
+            />
+          )}
           <LoginText>
             Already have an account ?
             <Span

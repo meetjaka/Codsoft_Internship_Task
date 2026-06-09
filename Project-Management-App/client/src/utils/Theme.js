@@ -1,56 +1,42 @@
 export const darkTheme = {
-    bg:"#15171E",
-    bgLighter:"#1C1E27",
-    itemHover: "#3A3C45",
-    itemText:"#DADEDF",
-    primary: "#854CE6",
-    bgDark:"#15171E",
-    text:"#F2F3F4",
-    textSoft:"#C1C7C9",
-    soft:"#373D3F",
-    soft2:"#8C979A",
-    card: "#1C1E27",
+    bg:"#000000",
+    bgLighter:"#000000",
+    itemHover: "#111111",
+    itemText:"#888888",
+    primary: "#FFFFFF",
+    bgDark:"#000000",
+    text:"#FFFFFF",
+    textSoft:"#888888",
+    soft:"#222222",
+    soft2:"#666666",
+    card: "#0A0A0A",
     lightAdd:"99",
-    yellow: "#fccf03",
-    green: "#03fc45",
-    pink: "#fc036b",
-    recieve_message: "#1a1826",
-    chat_background: "#100f17",
-    send_message: "#4f34ad",
-    contact_background: "#151a21",
-
-    /*Colors
-Swatch 1
-#030405
-Swatch 2
-#585759
-Swatch 3
-#03840c
-Swatch 4
-#acb0b3
-Swatch 5
-#185c1a
-Swatch 6
-#40b957*/
+    yellow: "#FBBF24",
+    green: "#34D399",
+    pink: "#F472B6",
+    recieve_message: "#111111",
+    chat_background: "#000000",
+    send_message: "#FFFFFF",
+    send_message_text_color: "#000000",
+    contact_background: "#0A0A0A",
 }
 
 export const lightTheme = {
-    bg:"#F8F9FD",
+    bg:"#FFFFFF",
     bgLighter:"#FFFFFF",
-    itemHover: "#F7F5F4",
-    itemText:"#555F61",
-    primary: "#854CE6",
-    bgDark:"white",
-    text:"#2F2F2F",
-    textSoft:"#606060",
-    soft:"#C4C4C4",
-    soft2:"#757575",
+    itemHover: "#F3F4F6",
+    itemText:"#666666",
+    primary: "#000000",
+    bgDark:"#FFFFFF",
+    text:"#000000",
+    textSoft:"#666666",
+    soft:"#E5E7EB",
+    soft2:"#9CA3AF",
     card: "#FFFFFF",
     lightAdd:"",
-    recieve_message: "#ffffff",
-    chat_background: "#f5f5fc",
-    send_message: "#4f34ad",
-    send_message_text_color: "#ffffff",
-    contact_background: "#ffffff",
-
-  }
+    recieve_message: "#F3F4F6",
+    chat_background: "#FFFFFF",
+    send_message: "#000000",
+    send_message_text_color: "#FFFFFF",
+    contact_background: "#F9FAFB",
+}

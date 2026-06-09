@@ -7,8 +7,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 padding: 40px 0px 100px 0px;   
- background-image: linear-gradient(90deg, rgba(0,70,209,0.03) 0%, rgba(57,14,61,0.1) 100%);
- clip-path: polygon(0 0, 100% 0, 100% 100%,50% 95%, 0 100%);
+ background: #000000;
 `;
 
 const Title = styled.div`
@@ -19,7 +18,7 @@ const Title = styled.div`
       margin-top: 12px;
       font-size: 36px;
   }
-  color: ${({ theme }) => theme.text};
+  color: #FFFFFF;
 `;
 
 const Description = styled.p`

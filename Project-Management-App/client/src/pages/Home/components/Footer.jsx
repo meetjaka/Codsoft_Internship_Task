@@ -1,8 +1,9 @@
-import styled from 'styled-components';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import styled from "styled-components";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LogoIcon from "../../../Images/OrbitLogo.png";
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -15,10 +16,19 @@ const FooterContainer = styled.footer`
   color: ${({ theme }) => theme.text};
 `;
 
-const Logo = styled.h1`
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 600;
   font-size: 20px;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.text};
+`;
+
+const Image = styled.img`
+  height: 30px;
+  mix-blend-mode: screen;
+  border-radius: 50%;
 `;
 
 const Nav = styled.nav`
@@ -39,7 +49,7 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled.a`
-color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 0.2s ease-in-out;
@@ -74,7 +84,10 @@ const Copyright = styled.p`
 function Footer() {
   return (
     <FooterContainer>
-      <Logo>VEXA</Logo>
+      <Logo>
+        <Image src={LogoIcon} />
+        ORBIT
+      </Logo>
       <Nav>
         <NavLink href="#home">Home</NavLink>
         <NavLink href="#features">Features</NavLink>
@@ -82,14 +95,20 @@ function Footer() {
         <NavLink href="#team">Team</NavLink>
       </Nav>
       <SocialMediaIcons>
-        <SocialMediaIcon href="#"><FacebookIcon /></SocialMediaIcon>
-        <SocialMediaIcon href="#"><TwitterIcon /></SocialMediaIcon>
-        <SocialMediaIcon href="#"><LinkedInIcon /></SocialMediaIcon>
-        <SocialMediaIcon href="#"><InstagramIcon /></SocialMediaIcon>
+        <SocialMediaIcon href="#">
+          <FacebookIcon />
+        </SocialMediaIcon>
+        <SocialMediaIcon href="#">
+          <TwitterIcon />
+        </SocialMediaIcon>
+        <SocialMediaIcon href="#">
+          <LinkedInIcon />
+        </SocialMediaIcon>
+        <SocialMediaIcon href="#">
+          <InstagramIcon />
+        </SocialMediaIcon>
       </SocialMediaIcons>
-      <Copyright>
-        &copy; 2023 Vexa. All rights reserved.
-      </Copyright>
+      <Copyright>&copy; 2026 ORBIT. All rights reserved.</Copyright>
     </FooterContainer>
   );
 }

@@ -57,32 +57,34 @@ const TopBar = Styled.div`
 `;
 
 const CreateButton = Styled.div`
-  padding: 20px 30px;
-  text-align: left;
-  font-size: 16px;
-  font-weight: 800;
-  color: ${({ theme }) => theme.text};
-  border-radius: 12px;
-  background: linear-gradient(76.35deg, #801AE6 15.89%, #A21AE6 89.75%);
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  border-radius: 4px;
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease-in-out;
   &:hover {
-    background: linear-gradient(76.35deg, #801AE6 15.89%, #A21AE6 89.75%);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    background: #DDDDDD;
+    border: 1px solid #DDDDDD;
   }
-  gap: 14px;
+  gap: 10px;
 
   ${({ btn }) =>
     btn === "team" &&
     `
-    background: linear-gradient(76.35deg, #FFC107 15.89%, #FFC107 89.75%);
+    background: transparent;
+    color: ${({ theme }) => theme.text};
+    border: 1px solid ${({ theme }) => theme.soft};
     &:hover {
-      background: linear-gradient(76.35deg, #FFC107 15.89%, #FFC107 89.75%);
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+      background: ${({ theme }) => theme.soft};
     }
   `}
 `;
@@ -108,18 +110,18 @@ const StatsWrapper = Styled.div`
 const StatCard = Styled.div`
   width: 100%;
   height: 100%;
-  padding: 4px;
+  padding: 16px;
   text-align: left;
   margin: 2px;
   font-size: 18px;
   font-weight: 500;
   color: ${({ theme }) => theme.text};
-  border-radius: 12px;
-  background-color: ${({ theme }) => theme.card};
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.20);
-  transition: all 0.5s ease;
+  border-radius: 0px;
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.soft};
+  transition: all 0.2s ease-in-out;
   &:hover {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    border: 1px solid ${({ theme }) => theme.textSoft};
   }
 `;
 

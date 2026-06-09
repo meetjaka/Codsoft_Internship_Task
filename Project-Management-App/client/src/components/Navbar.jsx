@@ -21,14 +21,11 @@ import { useNavigate } from "react-router-dom";
 const Container = styled.div`
   position: sticky;
   top: 0;
-  height: 56px;
-  margin: 6px 6px 0px 6px;
-  border-radius: 12px;
+  height: 64px;
   z-index: 99;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.06);
   background-color: ${({ theme }) => theme.bgLighter};
+  border-bottom: 1px solid ${({ theme }) => theme.soft};
   @media screen and (max-width: 480px) {
-    margin: 0px 0px 0px 0px;
     height: 60px;
   }
 `;
@@ -59,9 +56,13 @@ const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 100px;
   color: ${({ theme }) => theme.textSoft};
-  background-color: ${({ theme }) => theme.bgDark};
+  background-color: transparent;
+  border-bottom: 1px solid ${({ theme }) => theme.soft};
+  transition: all 0.3s ease;
+  &:focus-within {
+    border-color: ${({ theme }) => theme.text};
+  }
 `;
 const Input = styled.input`
   width: 100%;
@@ -90,7 +91,7 @@ const Button = styled.button`
   transition: all 0.3s ease;
   &:hover {
     background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.bg};
   }
 `;
 
@@ -104,10 +105,8 @@ const User = styled.div`
   color: ${({ theme }) => theme.text};
   @media (max-width: 800px) {
     gap: 2px;
-}
+  }
 `;
-
-
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const [SignUpOpen, setSignUpOpen] = useState(false);
@@ -121,15 +120,16 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
 
   const [notification, setNotification] = useState([]);
   useEffect(() => {
-    getUsers(token).then((res) => {
-      setUsers(res.data);
-    }).catch((err) => {
-      if (err.response.status === 401) {
-        dispatch(logout())
-      }
-    });
+    getUsers(token)
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          dispatch(logout());
+        }
+      });
   }, [dispatch]);
-
 
   const getNotifications = async () => {
     try {
@@ -200,7 +200,10 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
           <User>
             {currentUser ? (
               <>
-                <IcoButton aria-describedby={id} onClick={() => navigate('/chats')}>
+                <IcoButton
+                  aria-describedby={id}
+                  onClick={() => navigate("/chats")}
+                >
                   <Badge color="primary">
                     <Forum />
                   </Badge>

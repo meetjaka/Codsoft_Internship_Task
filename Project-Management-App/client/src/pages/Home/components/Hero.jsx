@@ -32,7 +32,8 @@ const TitleTag = styled.div`
     font-size: 40px;
   }
   font-weight: 800;
-  color: ${({ theme }) => theme.text};
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
 `
 const DescriptiveTag = styled.p`
   font-size: 17px;
@@ -49,11 +50,16 @@ const Button = styled.button`
   padding: 16px 20px;
   font-size: 20px;
   font-weight: 600;
-  background: linear-gradient(76.35deg, #801AE6 15.89%, #A21AE6 89.75%);
-  color: ${({ theme }) => theme.text};
-  border: none;
-  border-radius: 10px;
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid #FFFFFF;
+  border-radius: 0px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background: #DDDDDD;
+    border: 1px solid #DDDDDD;
+  }
   @media (max-width: 1250px) {
     width: 80%;
   }

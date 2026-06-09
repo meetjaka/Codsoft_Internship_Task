@@ -238,7 +238,7 @@ const InviteButton = styled.button`
   transition: all 0.3s ease;
   &:hover {
     background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.bg};
   }
 `;
 
@@ -351,7 +351,7 @@ const AddWork = ({ ProjectMembers, ProjectId, setCreated }) => {
 
     console.log(newWorkCard);
     setLoading(true);
-    addWorks(ProjectId, newWorkCard,token)
+    addWorks(ProjectId, newWorkCard, token)
       .then((res) => {
         setLoading(false);
         emptyForm();
@@ -360,7 +360,7 @@ const AddWork = ({ ProjectMembers, ProjectId, setCreated }) => {
           openSnackbar({
             message: "Created a work card Successfully",
             severity: "success",
-          })
+          }),
         );
       })
       .catch((err) => {
@@ -369,7 +369,7 @@ const AddWork = ({ ProjectMembers, ProjectId, setCreated }) => {
           openSnackbar({
             message: err.message,
             severity: "error",
-          })
+          }),
         );
         setLoading(false);
       });
@@ -547,7 +547,7 @@ const AddWork = ({ ProjectMembers, ProjectId, setCreated }) => {
                         </Details>
                       </UserData>
                       {!task[taskIndex].members.find(
-                        (member) => member.id === user.id._id
+                        (member) => member.id === user.id._id,
                       ) && (
                         <InviteButton
                           onClick={() => AddToMember(user, taskIndex)}

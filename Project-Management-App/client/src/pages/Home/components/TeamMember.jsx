@@ -5,13 +5,16 @@ const TeamMemberContainer = styled.div`
   width: 350px;
   display: flex;
   flex-direction: column;
-  background-color: hsl(250, 24%, 9%);
-  box-shadow: RGB(252, 3, 111, 0.15) 0px 4px 24px;
-  border: 1px solid RGB(252, 3, 111,30%);
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.soft};
   padding: 24px 24px;
-    border-radius: 12px;
-    gap: 8px;
-    cursor: pointer;
+  border-radius: 0px;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.textSoft};
+  }
     @media (max-width: 925px) {
         width: 300px;
         }
@@ -43,7 +46,7 @@ const TeamMemberPhoto = styled.img`
 const TeamMemberName = styled.div`
   font-size: 18px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: #FFFFFF;
 `;
 
 const TeamMemberTitle = styled.div`

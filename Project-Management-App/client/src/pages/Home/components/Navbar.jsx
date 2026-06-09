@@ -1,10 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import LogoIcon from "../../../Images/OrbitLogo.png";
 
 const Container = styled.div`
-width: 90%;
-max-width: 1320px;
+  width: 90%;
+  max-width: 1320px;
   height: 60px;
   margin: 12px 14px;
   display: flex;
@@ -14,10 +15,19 @@ max-width: 1320px;
     padding: 0px 20px !important;
   }
 `;
-const Logo = styled.h1`
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
   font-weight: 600;
   font-size: 20px;
-  color: ${({ theme }) => theme.primary};
+  gap: 10px;
+  color: ${({ theme }) => theme.text};
+`;
+
+const Image = styled.img`
+  height: 30px;
+  mix-blend-mode: screen;
+  border-radius: 50%;
 `;
 
 const Menu = styled.ul`
@@ -42,8 +52,6 @@ const MenuItem = styled.a`
   }
 `;
 
-
-
 const Button = styled.button`
   padding: 5px 18px;
   background-color: transparent;
@@ -56,18 +64,20 @@ const Button = styled.button`
   align-items: center;
   gap: 5px;
   font-size: 15px;
-  border-radius: 100px;
+  border-radius: 0px;
   transition: all 0.3s ease;
   &:hover {
     background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.bg};
   }
 `;
 const Navbar = ({ setSignInOpen }) => {
-
   return (
     <Container>
-      <Logo>VEXA</Logo>
+      <Logo>
+        <Image src={LogoIcon} />
+        ORBIT
+      </Logo>
       <Menu>
         <MenuItem href="#home">Home</MenuItem>
         <MenuItem href="#features">Features</MenuItem>
@@ -77,9 +87,8 @@ const Navbar = ({ setSignInOpen }) => {
       <Button onClick={() => setSignInOpen(true)}>
         <AccountCircleOutlinedIcon /> Sign In
       </Button>
-
     </Container>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
