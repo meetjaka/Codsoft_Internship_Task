@@ -383,7 +383,9 @@ const AddNewProject = ({ setNewProject, teamId, teamProject }) => {
             console.log(err);
             dispatch(
               openSnackbar({
-                message: `Invitation cant be sent to ${user.name}`,
+                message:
+                  err.response?.data?.message ||
+                  `Invitation can't be sent to ${user.name}`,
                 type: "error",
               }),
             );

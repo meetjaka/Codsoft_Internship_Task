@@ -12,28 +12,35 @@ const app = express();
 dotenv.config();
 
 /** Middlewares */
-app.use(express.json());
 const corsConfig = {
   credentials: true,
   origin: true,
 };
 app.use(cors(corsConfig));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(morgan("tiny"));
 app.disable("x-powered-by");
 
 const port = process.env.PORT || 8700;
-const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/pma";
+const mongoUri = process.env.MONGO_URI;
+const jwtSecret = process.env.JWT;
 
-const connect = () => {
+const connect = async () => {
+  if (!mongoUri || mongoUri.includes("<username>")) {
+    throw new Error(
+      "MONGO_URI is missing or incomplete. Configure it in server/.env.",
+    );
+  }
+  if (!jwtSecret) {
+    throw new Error("JWT is missing. Configure it in server/.env.");
+  }
+
   mongoose.set("strictQuery", true);
-  mongoose
-    .connect(mongoUri)
-    .then(() => {
-      console.log("MongoDB connected");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  await mongoose.connect(mongoUri, {
+    serverSelectionTimeoutMS: 10000,
+  });
+  console.log("MongoDB connected");
 };
 
 app.use(express.json());
@@ -61,7 +68,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log("Connected");
-  connect();
-});
+const startServer = async () => {
+  try {
+    await connect();
+    app.listen(port, () => {
+      console.log(`Server connected on port ${port}`);
+    });
+  } catch (err) {
+    console.error(`Server startup failed: ${err.message}`);
+    process.exitCode = 1;
+  }
+};
+
+startServer();

@@ -268,6 +268,14 @@ export const inviteProjectMember = async (req, res, next) => {
   }
   const project = await Project.findById(req.params.id);
   if (!project) return next(createError(404, "Project not found!"));
+  if (!process.env.EMAIL_USERNAME || !process.env.EMAIL_PASSWORD) {
+    return next(
+      createError(
+        503,
+        "Email is not configured. Set EMAIL_USERNAME and EMAIL_PASSWORD in server/.env.",
+      ),
+    );
+  }
 
   req.app.locals.CODE = await otpGenerator.generate(8, {
     upperCaseAlphabets: true,
@@ -315,13 +323,19 @@ export const inviteProjectMember = async (req, res, next) => {
           subject: `Invitation to join project ${project.title}`,
           html: mailBody,
         };
-        transporter.sendMail(mailOptions, (err, data) => {
-          if (err) {
-            return next(err);
-          } else {
-            return res.status(200).json({ message: "Email sent successfully" });
-          }
-        });
+        try {
+          await transporter.sendMail(mailOptions);
+          return res
+            .status(200)
+            .json({ message: "Email sent successfully" });
+        } catch (err) {
+          return next(
+            createError(
+              502,
+              `Invitation email could not be sent: ${err.message}`,
+            ),
+          );
+        }
       } else {
         return next(
           createError(

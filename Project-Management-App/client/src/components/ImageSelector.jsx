@@ -38,12 +38,16 @@ const Img = styled.img`
 
 const ImageSelector = ({ inputs, setInputs }) => {
     const handleOnCompleted = files => {
-        console.log(files[0].base64_file);
+        const base64Image = files[0].base64_file;
+
+        if (base64Image.length > 10 * 1024 * 1024) {
+            window.alert("Image is too large. Please choose an image smaller than 10 MB.");
+            return;
+        }
 
         setInputs((prev) => {
-            return { ...prev, img: files[0].base64_file };
+            return { ...prev, img: base64Image };
         });
-        console.log(inputs);
     };
 
     const CustomisedButton = ({ triggerInput }) => {

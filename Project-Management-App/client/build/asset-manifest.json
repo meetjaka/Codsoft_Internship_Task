@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0dce4e37.css",
+    "main.js": "/static/js/main.e0e889fc.js",
+    "static/media/AddProject.gif": "/static/media/AddProject.2c5999a4e89ba1b93b55.gif",
+    "static/media/Header.png": "/static/media/Header.396cf0c7d098273bd1cb.png",
+    "static/media/OrbitLogo.png": "/static/media/OrbitLogo.34dae8cc7b0014ea4da1.png",
+    "static/media/logo.svg": "/static/media/logo.5aa6aa147ab1842f69f8dd742a22ed96.svg",
+    "static/media/google.svg": "/static/media/google.2815e99898cea31ba11ee734c4f6b72e.svg",
+    "index.html": "/index.html",
+    "main.0dce4e37.css.map": "/static/css/main.0dce4e37.css.map",
+    "main.e0e889fc.js.map": "/static/js/main.e0e889fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0dce4e37.css",
+    "static/js/main.e0e889fc.js"
+  ]
+}
